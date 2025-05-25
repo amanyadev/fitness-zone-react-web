@@ -36,8 +36,8 @@ const SocialMedia = () => {
   return (
     <section className="py-20 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(249,115,22,0.1),transparent_50%)]"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(220,38,38,0.1),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(255,255,0,0.1),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,0,0.1),transparent_50%)]"></div>
       
       <div className="container mx-auto px-4 lg:px-8 relative">
         <div className="max-w-6xl mx-auto">
@@ -45,7 +45,7 @@ const SocialMedia = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               FOLLOW OUR 
-              <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
+              <span className="text-yellow-400">
                 JOURNEY
               </span>
             </h2>
@@ -56,11 +56,11 @@ const SocialMedia = () => {
 
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Instagram Section */}
-            <div className="bg-gradient-to-br from-gray-900/60 to-gray-800/60 backdrop-blur-lg border border-white/10 rounded-3xl p-8 group hover:border-orange-500/30 transition-all duration-500">
+            <div className="bg-gradient-to-br from-gray-900/60 to-gray-800/60 backdrop-blur-lg border border-white/10 rounded-3xl p-8 group hover:border-yellow-400/30 transition-all duration-500">
               <div className="flex items-center justify-between mb-8">
                 <div className="flex items-center space-x-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <Instagram className="w-8 h-8 text-white" />
+                  <div className="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <Instagram className="w-8 h-8 text-black" />
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-white">@k4fitness</h3>
@@ -69,7 +69,7 @@ const SocialMedia = () => {
                 </div>
                 <button
                   onClick={openInstagram}
-                  className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-xl font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105"
+                  className="bg-yellow-400 text-black px-6 py-3 rounded-xl font-semibold hover:bg-yellow-500 transition-all duration-300 transform hover:scale-105"
                 >
                   Follow
                 </button>
@@ -96,7 +96,7 @@ const SocialMedia = () => {
               <div className="mt-6 text-center">
                 <button
                   onClick={openInstagram}
-                  className="text-orange-500 hover:text-orange-400 font-semibold flex items-center justify-center space-x-2 mx-auto group/btn"
+                  className="text-yellow-400 hover:text-yellow-500 font-semibold flex items-center justify-center space-x-2 mx-auto group/btn"
                 >
                   <span>View all posts</span>
                   <span className="group-hover/btn:translate-x-1 transition-transform duration-300">→</span>
@@ -105,10 +105,10 @@ const SocialMedia = () => {
             </div>
 
             {/* Facebook Section */}
-            <div className="bg-gradient-to-br from-gray-900/60 to-gray-800/60 backdrop-blur-lg border border-white/10 rounded-3xl p-8 group hover:border-orange-500/30 transition-all duration-500">
+            <div className="bg-gradient-to-br from-gray-900/60 to-gray-800/60 backdrop-blur-lg border border-white/10 rounded-3xl p-8 group hover:border-yellow-400/30 transition-all duration-500">
               <div className="flex items-center justify-between mb-8">
                 <div className="flex items-center space-x-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <Facebook className="w-8 h-8 text-white" />
                   </div>
                   <div>
@@ -118,7 +118,7 @@ const SocialMedia = () => {
                 </div>
                 <button
                   onClick={openFacebook}
-                  className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:scale-105"
+                  className="bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-700 transition-all duration-300 transform hover:scale-105"
                 >
                   Like
                 </button>
@@ -128,8 +128,8 @@ const SocialMedia = () => {
               <div className="space-y-6">
                 <div className="bg-black/30 rounded-xl p-6 border border-white/5">
                   <div className="flex items-start space-x-3 mb-4">
-                    <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-white font-bold text-sm">K4</span>
+                    <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-black font-bold text-sm">K4</span>
                     </div>
                     <div>
                       <p className="text-white font-semibold">K4 Fitness</p>
@@ -149,8 +149,8 @@ const SocialMedia = () => {
 
                 <div className="bg-black/30 rounded-xl p-6 border border-white/5">
                   <div className="flex items-start space-x-3 mb-4">
-                    <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-white font-bold text-sm">K4</span>
+                    <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-black font-bold text-sm">K4</span>
                     </div>
                     <div>
                       <p className="text-white font-semibold">K4 Fitness</p>
@@ -172,7 +172,7 @@ const SocialMedia = () => {
               <div className="mt-6 text-center">
                 <button
                   onClick={openFacebook}
-                  className="text-orange-500 hover:text-orange-400 font-semibold flex items-center justify-center space-x-2 mx-auto group/btn"
+                  className="text-yellow-400 hover:text-yellow-500 font-semibold flex items-center justify-center space-x-2 mx-auto group/btn"
                 >
                   <span>Visit our page</span>
                   <span className="group-hover/btn:translate-x-1 transition-transform duration-300">→</span>
@@ -191,14 +191,14 @@ const SocialMedia = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button
                   onClick={openInstagram}
-                  className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-xl font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
+                  className="bg-yellow-400 text-black px-8 py-4 rounded-xl font-semibold hover:bg-yellow-500 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
                 >
                   <Instagram className="w-5 h-5" />
                   <span>Follow on Instagram</span>
                 </button>
                 <button
                   onClick={openFacebook}
-                  className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
+                  className="bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
                 >
                   <Facebook className="w-5 h-5" />
                   <span>Like on Facebook</span>

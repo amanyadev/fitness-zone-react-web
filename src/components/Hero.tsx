@@ -189,12 +189,12 @@ const Hero = () => {
           >
             {/* Main Image */}
             <motion.div 
-              className="relative rounded-2xl overflow-hidden aspect-[4/3] perspective-1000"
+              className="relative rounded-2xl overflow-hidden aspect-[4/3] z-0"
               whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <motion.div 
-                className="absolute inset-0 bg-gradient-to-tr from-black via-transparent to-transparent z-10"
+                className="absolute inset-0 bg-gradient-to-tr from-black via-transparent to-transparent z-[1]"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1 }}
@@ -210,7 +210,7 @@ const Hero = () => {
             </motion.div>
 
             {/* Feature Cards */}
-            <div className="absolute -bottom-8 sm:-bottom-12 left-1/2 transform -translate-x-1/2 w-full max-w-md px-4 sm:px-0">
+            <div className="absolute -bottom-8 sm:-bottom-12 left-1/2 transform -translate-x-1/2 w-full max-w-md px-4 sm:px-0 z-[2]">
               <motion.div 
                 className="bg-black/80 backdrop-blur-xl border border-yellow-400/20 rounded-xl p-3 sm:p-4 md:p-6 grid grid-cols-3 gap-2 sm:gap-4"
                 initial={{ y: 50, opacity: 0 }}
@@ -220,14 +220,16 @@ const Hero = () => {
                 {features.map((feature, index) => {
                   const Icon = feature.icon;
                   return (
-                    <div
+                    <motion.div
                       key={index}
                       className="text-center group cursor-pointer relative"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 15 }}
                     >
                       <div 
-                        className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-yellow-400/20 rounded-lg flex items-center justify-center mx-auto mb-1.5 sm:mb-2 md:mb-3 transition-all duration-300 group-hover:bg-yellow-400/30"
+                        className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-yellow-400/20 rounded-lg flex items-center justify-center mx-auto mb-1.5 sm:mb-2 md:mb-3 transition-colors duration-300 group-hover:bg-yellow-400/30"
                       >
-                        <Icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-yellow-400 transition-all duration-300 group-hover:scale-110" />
+                        <Icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-yellow-400 transition-transform duration-300 group-hover:scale-110" />
                       </div>
                       <h3 className="text-[10px] sm:text-xs md:text-sm font-semibold text-white mb-0.5 sm:mb-1 transition-colors duration-300 group-hover:text-yellow-400">
                         {feature.title}
@@ -235,7 +237,7 @@ const Hero = () => {
                       <p className="text-[8px] sm:text-[10px] md:text-xs text-gray-400 transition-colors duration-300 group-hover:text-gray-300">
                         {feature.description}
                       </p>
-                    </div>
+                    </motion.div>
                   );
                 })}
               </motion.div>

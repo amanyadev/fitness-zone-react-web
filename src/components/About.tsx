@@ -1,8 +1,12 @@
 
 const About = () => {
   return (
-    <section id="about" className="py-20 bg-gray-900">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section id="about" className="py-20 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(249,115,22,0.1),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(220,38,38,0.1),transparent_50%)]"></div>
+      
+      <div className="container mx-auto px-4 lg:px-8 relative">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
@@ -19,8 +23,8 @@ const About = () => {
 
           {/* Features Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-black/50 p-8 rounded-lg border border-orange-500/20 hover:border-orange-500/50 transition-all duration-300 transform hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center mb-6">
+            <div className="bg-gradient-to-br from-gray-900/60 to-gray-800/60 backdrop-blur-lg border border-white/10 p-8 rounded-2xl hover:border-orange-500/50 transition-all duration-300 transform hover:scale-105 group">
+              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <span className="text-2xl font-bold">💪</span>
               </div>
               <h3 className="text-2xl font-bold mb-4 text-orange-500">Expert Trainers</h3>
@@ -29,8 +33,8 @@ const About = () => {
               </p>
             </div>
 
-            <div className="bg-black/50 p-8 rounded-lg border border-orange-500/20 hover:border-orange-500/50 transition-all duration-300 transform hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center mb-6">
+            <div className="bg-gradient-to-br from-gray-900/60 to-gray-800/60 backdrop-blur-lg border border-white/10 p-8 rounded-2xl hover:border-orange-500/50 transition-all duration-300 transform hover:scale-105 group">
+              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <span className="text-2xl font-bold">🏋️</span>
               </div>
               <h3 className="text-2xl font-bold mb-4 text-orange-500">Premium Equipment</h3>
@@ -39,8 +43,8 @@ const About = () => {
               </p>
             </div>
 
-            <div className="bg-black/50 p-8 rounded-lg border border-orange-500/20 hover:border-orange-500/50 transition-all duration-300 transform hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center mb-6">
+            <div className="bg-gradient-to-br from-gray-900/60 to-gray-800/60 backdrop-blur-lg border border-white/10 p-8 rounded-2xl hover:border-orange-500/50 transition-all duration-300 transform hover:scale-105 group">
+              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <span className="text-2xl font-bold">🎯</span>
               </div>
               <h3 className="text-2xl font-bold mb-4 text-orange-500">Personal Programs</h3>
@@ -49,8 +53,8 @@ const About = () => {
               </p>
             </div>
 
-            <div className="bg-black/50 p-8 rounded-lg border border-orange-500/20 hover:border-orange-500/50 transition-all duration-300 transform hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center mb-6">
+            <div className="bg-gradient-to-br from-gray-900/60 to-gray-800/60 backdrop-blur-lg border border-white/10 p-8 rounded-2xl hover:border-orange-500/50 transition-all duration-300 transform hover:scale-105 group">
+              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <span className="text-2xl font-bold">🕐</span>
               </div>
               <h3 className="text-2xl font-bold mb-4 text-orange-500">Flexible Hours</h3>
@@ -59,8 +63,8 @@ const About = () => {
               </p>
             </div>
 
-            <div className="bg-black/50 p-8 rounded-lg border border-orange-500/20 hover:border-orange-500/50 transition-all duration-300 transform hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center mb-6">
+            <div className="bg-gradient-to-br from-gray-900/60 to-gray-800/60 backdrop-blur-lg border border-white/10 p-8 rounded-2xl hover:border-orange-500/50 transition-all duration-300 transform hover:scale-105 group">
+              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <span className="text-2xl font-bold">👥</span>
               </div>
               <h3 className="text-2xl font-bold mb-4 text-orange-500">Community</h3>
@@ -69,8 +73,8 @@ const About = () => {
               </p>
             </div>
 
-            <div className="bg-black/50 p-8 rounded-lg border border-orange-500/20 hover:border-orange-500/50 transition-all duration-300 transform hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center mb-6">
+            <div className="bg-gradient-to-br from-gray-900/60 to-gray-800/60 backdrop-blur-lg border border-white/10 p-8 rounded-2xl hover:border-orange-500/50 transition-all duration-300 transform hover:scale-105 group">
+              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <span className="text-2xl font-bold">🏆</span>
               </div>
               <h3 className="text-2xl font-bold mb-4 text-orange-500">Proven Results</h3>

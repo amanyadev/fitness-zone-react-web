@@ -91,10 +91,12 @@ const Footer = () => {
             <div>
               <h4 className="text-lg font-semibold text-yellow-400 mb-4">Contact Info</h4>
               <div className="space-y-2 text-gray-300">
-                <p>123 Fitness Street</p>
-                <p>Downtown District</p>
-                <p>City, State 12345</p>
+                <p>Sector 6A, K.K. Complex</p>
+                <p>In front of Akash Enclave</p>
+                <p>Vrindavan Colony, Telibagh</p>
+                <p>Lucknow, Uttar Pradesh 226002</p>
                 <p className="mt-4 cursor-pointer hover:text-yellow-400" onClick={() => window.location.href = `tel:${whatsappNumber}`}>{whatsappNumber}</p>
+                <p className="cursor-pointer hover:text-yellow-400" onClick={() => window.location.href = 'tel:+918756477778'}>+91 87564 77778</p>
                 <p className="cursor-pointer hover:text-yellow-400" onClick={() => window.location.href = 'mailto:info@k4fitness.com'}>info@k4fitness.com</p>
               </div>
             </div>

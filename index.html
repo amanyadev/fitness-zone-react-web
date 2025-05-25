@@ -2,39 +2,42 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>K4 Fitness Zone</title>
-    <style>
-      @font-face {
-        font-family: 'FC Fast Bold';
-        src: url('/fonts/FCFastBold.woff2') format('woff2'),
-             url('/fonts/FCFastBold.woff') format('woff');
-        font-weight: bold;
-        font-style: normal;
-        font-display: swap;
-      }
-      title {
-        font-family: 'FC Fast Bold', sans-serif;
-      }
-    </style>
-    <meta name="description" content="Experience the ultimate fitness journey at K4 Fitness. Professional trainers, premium equipment, and personalized programs to help you achieve your goals." />
-    <meta name="author" content="K4 Fitness" />
-
-    <meta property="og:title" content="K4 Fitness Zone" />
-    <meta property="og:description" content="Experience the ultimate fitness journey at K4 Fitness. Professional trainers, premium equipment, and personalized programs to help you achieve your goals." />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="K4 Fitness Zone - Transform your limits with premium equipment and expert trainers" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta property="og:url" content="https://k4fitnesszone.com/" />
+    <meta property="og:title" content="K4 Fitness Zone" />
+    <meta property="og:description" content="Transform your limits with premium equipment and expert trainers" />
+    <meta property="og:image" content="/og-image.jpg" />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@k4fitness" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <!-- Preload critical assets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+    
+    <title>K4 Fitness Zone</title>
   </head>
-
   <body>
     <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+              console.log('ServiceWorker registration successful');
+            })
+            .catch(err => {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+      }
+    </script>
   </body>
 </html>

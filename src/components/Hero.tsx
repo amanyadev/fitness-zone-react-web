@@ -64,7 +64,7 @@ const Hero = () => {
   ];
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+    <section id="home" className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-black">
       {/* Background Elements */}
       <motion.div 
         className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,0,0.1),transparent_70%)]"
@@ -80,25 +80,25 @@ const Hero = () => {
       />
 
       {/* Main Content */}
-      <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-4 lg:px-8 relative z-10 py-16 md:py-0">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Column - Text Content */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="space-y-8"
+            className="space-y-6 md:space-y-8"
           >
-            <motion.div variants={itemVariants} className="space-y-4">
+            <motion.div variants={itemVariants} className="space-y-3 md:space-y-4">
               <motion.div 
-                className="inline-block bg-yellow-400/10 border border-yellow-400/20 rounded-full px-4 py-1"
+                className="inline-block bg-yellow-400/10 border border-yellow-400/20 rounded-full px-3 py-1 md:px-4 md:py-1"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <span className="text-yellow-400 font-fc-fast italic">Welcome to K4 FITNESS</span>
+                <span className="text-yellow-400 font-fc-fast italic text-sm md:text-base">Welcome to K4 FITNESS</span>
               </motion.div>
               <motion.h1 
-                className="text-6xl md:text-7xl lg:text-8xl font-bold leading-tight"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight"
                 variants={itemVariants}
               >
                 TRANSFORM
@@ -112,19 +112,19 @@ const Hero = () => {
             </motion.div>
             
             <motion.p 
-              className="text-xl text-gray-300 max-w-xl leading-relaxed"
+              className="text-base md:text-xl text-gray-300 max-w-xl leading-relaxed"
               variants={itemVariants}
             >
               Experience a revolutionary fitness journey at K4 Fitness. Where cutting-edge equipment meets expert guidance, and your goals become achievements.
             </motion.p>
             
             <motion.div 
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-3 md:gap-4"
               variants={itemVariants}
             >
               <motion.button
                 onClick={scrollToContact}
-                className="group bg-yellow-400 text-black px-8 py-4 rounded-xl text-lg font-semibold hover:bg-yellow-500 transition-all duration-300 flex items-center justify-center space-x-2"
+                className="group bg-yellow-400 text-black px-6 py-3 md:px-8 md:py-4 rounded-xl text-base md:text-lg font-semibold hover:bg-yellow-500 transition-all duration-300 flex items-center justify-center space-x-2"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -135,7 +135,7 @@ const Hero = () => {
               
               <motion.button
                 onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-                className="group border-2 border-yellow-400/50 text-yellow-400 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-yellow-400/10 transition-all duration-300 flex items-center justify-center space-x-2"
+                className="group border-2 border-yellow-400/50 text-yellow-400 px-6 py-3 md:px-8 md:py-4 rounded-xl text-base md:text-lg font-semibold hover:bg-yellow-400/10 transition-all duration-300 flex items-center justify-center space-x-2"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -147,7 +147,7 @@ const Hero = () => {
 
             {/* Stats */}
             <motion.div 
-              className="grid grid-cols-3 gap-4 pt-8 border-t border-yellow-400/20"
+              className="grid grid-cols-3 gap-2 md:gap-4 pt-6 md:pt-8 border-t border-yellow-400/20"
               variants={containerVariants}
             >
               <motion.div 
@@ -156,8 +156,8 @@ const Hero = () => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <div className="text-3xl font-bold text-yellow-400">500+</div>
-                <div className="text-sm text-gray-400">Active Members</div>
+                <div className="text-2xl md:text-3xl font-bold text-yellow-400">500+</div>
+                <div className="text-xs md:text-sm text-gray-400">Active Members</div>
               </motion.div>
               <motion.div 
                 className="text-center"
@@ -165,8 +165,8 @@ const Hero = () => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <div className="text-3xl font-bold text-yellow-400">50+</div>
-                <div className="text-sm text-gray-400">Expert Trainers</div>
+                <div className="text-2xl md:text-3xl font-bold text-yellow-400">50+</div>
+                <div className="text-xs md:text-sm text-gray-400">Expert Trainers</div>
               </motion.div>
               <motion.div 
                 className="text-center"
@@ -174,8 +174,8 @@ const Hero = () => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <div className="text-3xl font-bold text-yellow-400">98%</div>
-                <div className="text-sm text-gray-400">Success Rate</div>
+                <div className="text-2xl md:text-3xl font-bold text-yellow-400">98%</div>
+                <div className="text-xs md:text-sm text-gray-400">Success Rate</div>
               </motion.div>
             </motion.div>
           </motion.div>
@@ -185,7 +185,7 @@ const Hero = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
-            className="relative"
+            className="relative mt-8 lg:mt-0"
           >
             {/* Main Image */}
             <motion.div 
@@ -210,9 +210,9 @@ const Hero = () => {
             </motion.div>
 
             {/* Feature Cards */}
-            <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 w-full max-w-md">
+            <div className="absolute -bottom-8 sm:-bottom-12 left-1/2 transform -translate-x-1/2 w-full max-w-md px-4 sm:px-0">
               <motion.div 
-                className="bg-black/80 backdrop-blur-xl border border-yellow-400/20 rounded-xl p-6 grid grid-cols-3 gap-4"
+                className="bg-black/80 backdrop-blur-xl border border-yellow-400/20 rounded-xl p-3 sm:p-4 md:p-6 grid grid-cols-3 gap-2 sm:gap-4"
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
@@ -220,18 +220,22 @@ const Hero = () => {
                 {features.map((feature, index) => {
                   const Icon = feature.icon;
                   return (
-                    <motion.div
+                    <div
                       key={index}
-                      className="text-center"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                      className="text-center group cursor-pointer relative"
                     >
-                      <div className="w-12 h-12 bg-yellow-400/20 rounded-lg flex items-center justify-center mx-auto mb-3">
-                        <Icon className="w-6 h-6 text-yellow-400" />
+                      <div 
+                        className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-yellow-400/20 rounded-lg flex items-center justify-center mx-auto mb-1.5 sm:mb-2 md:mb-3 transition-all duration-300 group-hover:bg-yellow-400/30"
+                      >
+                        <Icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-yellow-400 transition-all duration-300 group-hover:scale-110" />
                       </div>
-                      <h3 className="text-sm font-semibold text-white mb-1">{feature.title}</h3>
-                      <p className="text-xs text-gray-400">{feature.description}</p>
-                    </motion.div>
+                      <h3 className="text-[10px] sm:text-xs md:text-sm font-semibold text-white mb-0.5 sm:mb-1 transition-colors duration-300 group-hover:text-yellow-400">
+                        {feature.title}
+                      </h3>
+                      <p className="text-[8px] sm:text-[10px] md:text-xs text-gray-400 transition-colors duration-300 group-hover:text-gray-300">
+                        {feature.description}
+                      </p>
+                    </div>
                   );
                 })}
               </motion.div>

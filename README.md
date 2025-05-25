@@ -1,73 +1,100 @@
-# Welcome to your Lovable project
+# K4 Fitness Zone Website
 
-## Project info
+A modern, responsive website for K4 Fitness Zone, built with React and Tailwind CSS. The website showcases the gym's facilities, services, and provides easy contact options for potential members.
 
-**URL**: https://lovable.dev/projects/7dcf56ca-52a7-4a9c-8f49-f129562b65d3
+## 🌐 Live Website
 
-## How can I edit this code?
+Visit the website: [K4 Fitness Zone](https://amanyadev.github.io/fitness-zone-react-web/)
 
-There are several ways of editing your application.
+## 🚀 Features
 
-**Use Lovable**
+- Modern, responsive design
+- Interactive contact forms
+- Real-time location mapping
+- Social media integration (WhatsApp, Instagram)
+- Working hours display
+- Mobile-friendly interface
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/7dcf56ca-52a7-4a9c-8f49-f129562b65d3) and start prompting.
+## 🛠️ Technologies Used
 
-Changes made via Lovable will be committed automatically to this repo.
+- React 18
+- TypeScript
+- Vite
+- Tailwind CSS
+- shadcn/ui
+- Framer Motion
+- React Router DOM
 
-**Use your preferred IDE**
+## 📦 Installation
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+1. Clone the repository:
+```bash
+git clone https://github.com/amanyadev/fitness-zone-react-web.git
+cd fitness-zone-react-web
+```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+2. Install dependencies:
+```bash
+npm install
+```
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+3. Start the development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The site will be available at `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🚀 Deployment
 
-**Use GitHub Codespaces**
+The website is automatically deployed to GitHub Pages using GitHub Actions. The deployment process is triggered when:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. Changes are pushed to the `main` branch
+2. Manual deployment is triggered from the Actions tab
 
-## What technologies are used for this project?
+### Manual Deployment
 
-This project is built with:
+You can manually deploy the site using:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```bash
+npm run deploy
+```
 
-## How can I deploy this project?
+This will:
+1. Build the project
+2. Deploy it to the `gh-pages` branch
+3. Update the live site
 
-Simply open [Lovable](https://lovable.dev/projects/7dcf56ca-52a7-4a9c-8f49-f129562b65d3) and click on Share -> Publish.
+## 📞 Contact Information
 
-## Can I connect a custom domain to my Lovable project?
+For inquiries about gym membership and services:
+- Primary Phone: +91 96487 45611
+- Secondary Phone: +91 87564 77778
+- Email: info@k4fitness.com
+- Instagram: [@k4fitnesszone](https://www.instagram.com/k4fitnesszone)
 
-Yes, you can!
+## 📍 Location
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+K4 Fitness Zone is located at:
+Sector 6A, K.K. Complex, In front of Akash Enclave,
+Vrindavan Colony, Telibagh,
+Lucknow, Uttar Pradesh 226002
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## ⏰ Working Hours
+
+- Monday - Saturday: 
+  - Morning: 5:00 AM - 10:00 AM
+  - Evening: 5:00 PM - 10:00 PM
+- Sunday: Closed
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

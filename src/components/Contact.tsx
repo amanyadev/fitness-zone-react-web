@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Phone, MapPin, Clock, Send, Instagram } from "lucide-react";
+import { Phone, MapPin, Clock, Send, Instagram, Mail, AlertCircle } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -8,15 +8,81 @@ const Contact = () => {
     lastName: "",
     email: "",
     phone: "",
-    message: ""
+    message: "",
+  });
+
+  const [formErrors, setFormErrors] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    message: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showError, setShowError] = useState(false);
 
-  const whatsappNumber = "+1234567890"; // Replace with actual WhatsApp number
-  const instagramHandle = "k4fitness"; // Replace with actual Instagram handle
-  const gymLocation = [26.7760144, 80.9477836]; // Replace with actual gym coordinates
+  const whatsappNumber = "+919648745611";
+  const instagramHandle = "k4fitnesszone";
+  const emailAddress = "info@k4fitness.com";
+  const gymLocation = {
+    lat: 26.7760144,
+    lng: 80.9477836,
+    address: "123 Fitness Street, Downtown District, City, State 12345"
+  };
+
+  const validateForm = () => {
+    let isValid = true;
+    const errors = {
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      message: "",
+    };
+
+    // First Name validation
+    if (!formData.firstName.trim()) {
+      errors.firstName = "First name is required";
+      isValid = false;
+    }
+
+    // Last Name validation
+    if (!formData.lastName.trim()) {
+      errors.lastName = "Last name is required";
+      isValid = false;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim()) {
+      errors.email = "Email is required";
+      isValid = false;
+    } else if (!emailRegex.test(formData.email)) {
+      errors.email = "Please enter a valid email address";
+      isValid = false;
+    }
+
+    // Phone validation
+    const phoneRegex = /^\+?[\d\s-]{10,}$/;
+    if (!formData.phone.trim()) {
+      errors.phone = "Phone number is required";
+      isValid = false;
+    } else if (!phoneRegex.test(formData.phone)) {
+      errors.phone = "Please enter a valid phone number";
+      isValid = false;
+    }
+
+    // Message validation
+    if (!formData.message.trim()) {
+      errors.message = "Message is required";
+      isValid = false;
+    }
+
+    setFormErrors(errors);
+    return isValid;
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -24,21 +90,31 @@ const Contact = () => {
       ...prev,
       [name]: value
     }));
+    // Clear error when user starts typing
+    if (formErrors[name as keyof typeof formErrors]) {
+      setFormErrors(prev => ({
+        ...prev,
+        [name]: ""
+      }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setShowError(false);
+    
+    if (!validateForm()) {
+      setShowError(true);
+      return;
+    }
+
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setShowSuccess(true);
-    
-    // Reset form after showing success message
-    setTimeout(() => {
-      setShowSuccess(false);
+
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      setShowSuccess(true);
       setFormData({
         firstName: "",
         lastName: "",
@@ -46,178 +122,78 @@ const Contact = () => {
         phone: "",
         message: ""
       });
-    }, 3000);
+
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 5000);
+    } catch (error) {
+      setShowError(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handlePhoneClick = () => {
-    window.location.href = `tel:+15551234567`;
+    window.location.href = `tel:${whatsappNumber}`;
+  };
+
+  const handleEmailClick = () => {
+    window.location.href = `mailto:${emailAddress}`;
   };
 
   const openWhatsApp = () => {
     const message = encodeURIComponent("Hi! I'm interested in learning more about K4 Fitness membership and services.");
-    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+    const cleanNumber = whatsappNumber.replace(/[\s+]/g, '');
+    window.open(`https://api.whatsapp.com/send?phone=${cleanNumber}&text=${message}`, '_blank');
   };
 
   const openInstagram = () => {
-    window.open(`https://www.instagram.com/${instagramHandle}`, '_blank');
+    window.open(`https://www.instagram.com/${instagramHandle}/`, '_blank');
   };
 
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut"
-      }
-    }
+  const openMap = () => {
+    window.open(`https://maps.google.com/?q=${gymLocation.lat},${gymLocation.lng}`, '_blank');
   };
 
   return (
-    <section id="contact" className="relative py-20 bg-black overflow-hidden">
-      {/* Background Elements */}
-      <motion.div 
-        className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,0,0.1),transparent_70%)]"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5 }}
-      />
-      <motion.div 
-        className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(255,255,0,0.1),transparent_70%)]"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, delay: 0.5 }}
-      />
+    <section id="contact" className="relative py-20 bg-black">
+      {/* Background Gradients */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,0,0.1),transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(255,255,0,0.1),transparent_70%)]" />
 
       <div className="container mx-auto px-4 lg:px-8">
-        <motion.div 
-          className="max-w-6xl mx-auto"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
+        <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <motion.div className="text-center mb-16" variants={itemVariants}>
-            <motion.div 
-              className="inline-block bg-yellow-400/10 border border-yellow-400/20 rounded-full px-4 py-1 mb-4"
-              whileHover={{ scale: 1.05 }}
-            >
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="inline-block bg-yellow-400/10 border border-yellow-400/20 rounded-full px-4 py-1 mb-4">
               <span className="text-yellow-400 font-semibold">Get in Touch</span>
-            </motion.div>
-            <motion.h2 
-              className="text-4xl md:text-5xl font-bold mb-6"
-              variants={itemVariants}
-            >
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
               READY TO START YOUR
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
                 FITNESS JOURNEY?
               </span>
-            </motion.h2>
-            <motion.p 
-              className="text-xl text-gray-300 max-w-3xl mx-auto"
-              variants={itemVariants}
-            >
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Take the first step towards your fitness goals. Contact us today or visit our gym to begin your transformation.
-            </motion.p>
+            </p>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Left Column - Contact Info & Map */}
-            <motion.div className="space-y-8" variants={itemVariants}>
-              {/* Contact Information Card */}
-              <motion.div 
-                className="bg-gradient-to-br from-gray-900 to-black border border-yellow-400/20 rounded-2xl p-8 hover:border-yellow-400/40 transition-colors duration-300"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-              >
-                <h3 className="text-2xl font-bold mb-6 text-yellow-400">Visit Our Gym</h3>
-                <div className="space-y-6">
-                  <motion.div 
-                    className="flex items-start space-x-4 cursor-pointer"
-                    whileHover={{ x: 5 }}
-                    transition={{ duration: 0.2 }}
-                    onClick={() => window.open(`https://maps.google.com/?q=${gymLocation[0]},${gymLocation[1]}`, '_blank')}
-                  >
-                    <div className="w-12 h-12 bg-yellow-400/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-6 h-6 text-yellow-400" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-white mb-1">Location</h4>
-                      <p className="text-gray-400">
-                        123 Fitness Street<br />
-                        Downtown District<br />
-                        City, State 12345
-                      </p>
-                    </div>
-                  </motion.div>
-
-                  <motion.div 
-                    className="flex items-start space-x-4"
-                    whileHover={{ x: 5 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <div className="w-12 h-12 bg-yellow-400/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <Clock className="w-6 h-6 text-yellow-400" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-white mb-1">Working Hours</h4>
-                      <p className="text-gray-400">
-                        Mon-Fri: 5:00 AM - 11:00 PM<br />
-                        Sat-Sun: 6:00 AM - 10:00 PM
-                      </p>
-                    </div>
-                  </motion.div>
-
-                  <motion.div 
-                    className="flex items-start space-x-4 cursor-pointer"
-                    whileHover={{ x: 5 }}
-                    transition={{ duration: 0.2 }}
-                    onClick={handlePhoneClick}
-                  >
-                    <div className="w-12 h-12 bg-yellow-400/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-6 h-6 text-yellow-400" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-white mb-1">Phone</h4>
-                      <p className="text-gray-400">(555) 123-4567</p>
-                    </div>
-                  </motion.div>
-                </div>
-              </motion.div>
-
-              {/* Map */}
-              <motion.div 
-                className="h-[300px] rounded-2xl overflow-hidden border border-yellow-400/20"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-              >
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.542367435357!2d-0.09218674843746013!3d51.50510731882345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM1DCsDMwJzE4LjQiTiAwwrAwNScyNi4wIlc!5e0!3m2!1sen!2sus!4v1621436289000!5m2!1sen!2sus"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen={false}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="K4 Fitness Location"
-                ></iframe>
-              </motion.div>
-
-              {/* Quick Contact Buttons */}
-              <div className="grid grid-cols-2 gap-4">
+            <motion.div 
+              className="space-y-8"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              {/* Quick Contact Options */}
+              <div className="grid grid-cols-2 gap-4 mb-8">
                 <motion.button
                   onClick={openWhatsApp}
                   className="group bg-green-600 hover:bg-green-700 text-white p-6 rounded-xl transition-all duration-300 flex items-center justify-center space-x-3"
@@ -240,78 +216,187 @@ const Contact = () => {
                   <span className="font-semibold">Follow on Instagram</span>
                 </motion.button>
               </div>
+
+              {/* Contact Information Card */}
+              <div className="bg-gradient-to-br from-gray-900 to-black border border-yellow-400/20 rounded-2xl p-8">
+                <h3 className="text-2xl font-bold mb-6 text-yellow-400">Contact Information</h3>
+                <div className="space-y-6">
+                  <motion.div 
+                    className="flex items-start space-x-4 cursor-pointer group"
+                    onClick={openMap}
+                    whileHover={{ x: 5 }}
+                  >
+                    <div className="w-12 h-12 bg-yellow-400/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-400/30 transition-colors">
+                      <MapPin className="w-6 h-6 text-yellow-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white mb-1">Location</h4>
+                      <p className="text-gray-400 group-hover:text-yellow-400 transition-colors">
+                        {gymLocation.address}
+                      </p>
+                    </div>
+                  </motion.div>
+
+                  <motion.div 
+                    className="flex items-start space-x-4 cursor-pointer group"
+                    onClick={handlePhoneClick}
+                    whileHover={{ x: 5 }}
+                  >
+                    <div className="w-12 h-12 bg-yellow-400/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-400/30 transition-colors">
+                      <Phone className="w-6 h-6 text-yellow-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white mb-1">Phone</h4>
+                      <p className="text-gray-400 group-hover:text-yellow-400 transition-colors">{whatsappNumber}</p>
+                    </div>
+                  </motion.div>
+
+                  <motion.div 
+                    className="flex items-start space-x-4 cursor-pointer group"
+                    onClick={handleEmailClick}
+                    whileHover={{ x: 5 }}
+                  >
+                    <div className="w-12 h-12 bg-yellow-400/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-400/30 transition-colors">
+                      <Mail className="w-6 h-6 text-yellow-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white mb-1">Email</h4>
+                      <p className="text-gray-400 group-hover:text-yellow-400 transition-colors">{emailAddress}</p>
+                    </div>
+                  </motion.div>
+
+                  <motion.div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-yellow-400/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Clock className="w-6 h-6 text-yellow-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white mb-1">Working Hours</h4>
+                      <p className="text-gray-400">
+                        Mon-Fri: 5:00 AM - 11:00 PM<br />
+                        Sat-Sun: 6:00 AM - 10:00 PM
+                      </p>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+
+              {/* Map */}
+              <motion.div 
+                className="h-[300px] rounded-2xl overflow-hidden border border-yellow-400/20 cursor-pointer"
+                whileHover={{ scale: 1.02 }}
+                onClick={openMap}
+              >
+                <iframe
+                  src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.2936465843374!2d${gymLocation.lng}!3d${gymLocation.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDQ2JzMzLjYiTiA4MMKwNTYnNTIuMCJF!5e0!3m2!1sen!2sin!4v1621436289000!5m2!1sen!2sin`}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={false}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="K4 Fitness Location"
+                />
+              </motion.div>
             </motion.div>
 
             {/* Right Column - Contact Form */}
-            <motion.div variants={itemVariants}>
-              <motion.div 
-                className="bg-gradient-to-br from-gray-900 to-black border border-yellow-400/20 rounded-2xl p-8"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-              >
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="bg-gradient-to-br from-gray-900 to-black border border-yellow-400/20 rounded-2xl p-8">
                 <h3 className="text-2xl font-bold mb-6 text-yellow-400">Send us a Message</h3>
+                
+                {showError && (
+                  <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4 mb-6 flex items-start space-x-3">
+                    <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                    <p className="text-red-500">Please fix the errors in the form and try again.</p>
+                  </div>
+                )}
+
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+                    <div>
                       <input
                         type="text"
                         name="firstName"
                         value={formData.firstName}
                         onChange={handleInputChange}
                         placeholder="First Name"
-                        className="w-full px-4 py-3 bg-black/50 border border-yellow-400/20 rounded-xl text-white placeholder-gray-400 focus:border-yellow-400 focus:outline-none transition-colors duration-200"
-                        required
+                        className={`w-full px-4 py-3 bg-black/50 border rounded-xl text-white placeholder-gray-400 focus:outline-none transition-colors duration-200 ${
+                          formErrors.firstName ? 'border-red-500' : 'border-yellow-400/20 focus:border-yellow-400'
+                        }`}
                       />
-                    </motion.div>
-                    <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+                      {formErrors.firstName && (
+                        <p className="mt-1 text-red-500 text-sm">{formErrors.firstName}</p>
+                      )}
+                    </div>
+                    <div>
                       <input
                         type="text"
                         name="lastName"
                         value={formData.lastName}
                         onChange={handleInputChange}
                         placeholder="Last Name"
-                        className="w-full px-4 py-3 bg-black/50 border border-yellow-400/20 rounded-xl text-white placeholder-gray-400 focus:border-yellow-400 focus:outline-none transition-colors duration-200"
-                        required
+                        className={`w-full px-4 py-3 bg-black/50 border rounded-xl text-white placeholder-gray-400 focus:outline-none transition-colors duration-200 ${
+                          formErrors.lastName ? 'border-red-500' : 'border-yellow-400/20 focus:border-yellow-400'
+                        }`}
                       />
-                    </motion.div>
+                      {formErrors.lastName && (
+                        <p className="mt-1 text-red-500 text-sm">{formErrors.lastName}</p>
+                      )}
+                    </div>
                   </div>
-                  
-                  <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+
+                  <div>
                     <input
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
                       placeholder="Email Address"
-                      className="w-full px-4 py-3 bg-black/50 border border-yellow-400/20 rounded-xl text-white placeholder-gray-400 focus:border-yellow-400 focus:outline-none transition-colors duration-200"
-                      required
+                      className={`w-full px-4 py-3 bg-black/50 border rounded-xl text-white placeholder-gray-400 focus:outline-none transition-colors duration-200 ${
+                        formErrors.email ? 'border-red-500' : 'border-yellow-400/20 focus:border-yellow-400'
+                      }`}
                     />
-                  </motion.div>
-                  
-                  <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+                    {formErrors.email && (
+                      <p className="mt-1 text-red-500 text-sm">{formErrors.email}</p>
+                    )}
+                  </div>
+
+                  <div>
                     <input
                       type="tel"
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="Phone Number"
-                      className="w-full px-4 py-3 bg-black/50 border border-yellow-400/20 rounded-xl text-white placeholder-gray-400 focus:border-yellow-400 focus:outline-none transition-colors duration-200"
-                      required
+                      className={`w-full px-4 py-3 bg-black/50 border rounded-xl text-white placeholder-gray-400 focus:outline-none transition-colors duration-200 ${
+                        formErrors.phone ? 'border-red-500' : 'border-yellow-400/20 focus:border-yellow-400'
+                      }`}
                     />
-                  </motion.div>
-                  
-                  <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+                    {formErrors.phone && (
+                      <p className="mt-1 text-red-500 text-sm">{formErrors.phone}</p>
+                    )}
+                  </div>
+
+                  <div>
                     <textarea
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
                       placeholder="Tell us about your fitness goals..."
                       rows={4}
-                      className="w-full px-4 py-3 bg-black/50 border border-yellow-400/20 rounded-xl text-white placeholder-gray-400 focus:border-yellow-400 focus:outline-none transition-colors duration-200 resize-none"
-                      required
-                    ></textarea>
-                  </motion.div>
-                  
+                      className={`w-full px-4 py-3 bg-black/50 border rounded-xl text-white placeholder-gray-400 focus:outline-none transition-colors duration-200 resize-none ${
+                        formErrors.message ? 'border-red-500' : 'border-yellow-400/20 focus:border-yellow-400'
+                      }`}
+                    />
+                    {formErrors.message && (
+                      <p className="mt-1 text-red-500 text-sm">{formErrors.message}</p>
+                    )}
+                  </div>
+
                   <motion.button
                     type="submit"
                     className="group w-full bg-yellow-400 text-black py-4 rounded-xl text-lg font-semibold hover:bg-yellow-500 transition-all duration-300 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
@@ -327,16 +412,18 @@ const Contact = () => {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="text-green-400 text-center mt-4"
+                      className="bg-green-500/10 border border-green-500/20 rounded-xl p-4 mt-4"
                     >
-                      Message sent successfully! We'll get back to you soon.
+                      <p className="text-green-500 text-center">
+                        Message sent successfully! We'll get back to you soon.
+                      </p>
                     </motion.div>
                   )}
                 </form>
-              </motion.div>
+              </div>
             </motion.div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

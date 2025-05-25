@@ -95,7 +95,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <span className="text-yellow-400 font-semibold">Welcome to K4 Fitness</span>
+                <span className="text-yellow-400 font-fc-fast italic">Welcome to K4 FITNESS</span>
               </motion.div>
               <motion.h1 
                 className="text-6xl md:text-7xl lg:text-8xl font-bold leading-tight"

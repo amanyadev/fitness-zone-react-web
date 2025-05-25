@@ -1,7 +1,14 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'FC Fast Bold';
+  src: url('/fonts/FCFastBold.otf') format('opentype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
 
 @layer base {
   :root {

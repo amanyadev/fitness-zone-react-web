@@ -1,4 +1,3 @@
-
 import { Clock, Dumbbell, Users, Award, Target, Star } from "lucide-react";
 
 const BentoBox = () => {
@@ -13,7 +12,7 @@ const BentoBox = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
               EXPERIENCE 
-              <span className="text-yellow-400">
+              <span className="text-yellow-400 font-fc-fast italic">
                 K4 FITNESS
               </span>
             </h2>

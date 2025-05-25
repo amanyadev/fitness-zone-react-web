@@ -1,4 +1,3 @@
-
 import { Instagram, Facebook } from "lucide-react";
 
 const SocialMedia = () => {
@@ -112,7 +111,7 @@ const SocialMedia = () => {
                     <Facebook className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-white">K4 Fitness</h3>
+                    <h3 className="text-2xl font-fc-fast italic text-white">K4 FITNESS</h3>
                     <p className="text-gray-400">Like our Facebook page</p>
                   </div>
                 </div>
@@ -129,10 +128,10 @@ const SocialMedia = () => {
                 <div className="bg-black/30 rounded-xl p-6 border border-white/5">
                   <div className="flex items-start space-x-3 mb-4">
                     <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-black font-bold text-sm">K4</span>
+                      <span className="text-black font-fc-fast italic text-sm">K4</span>
                     </div>
                     <div>
-                      <p className="text-white font-semibold">K4 Fitness</p>
+                      <p className="text-white font-fc-fast italic">K4 FITNESS</p>
                       <p className="text-gray-400 text-sm">2 hours ago</p>
                     </div>
                   </div>
@@ -150,10 +149,10 @@ const SocialMedia = () => {
                 <div className="bg-black/30 rounded-xl p-6 border border-white/5">
                   <div className="flex items-start space-x-3 mb-4">
                     <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-black font-bold text-sm">K4</span>
+                      <span className="text-black font-fc-fast italic text-sm">K4</span>
                     </div>
                     <div>
-                      <p className="text-white font-semibold">K4 Fitness</p>
+                      <p className="text-white font-fc-fast italic">K4 FITNESS</p>
                       <p className="text-gray-400 text-sm">1 day ago</p>
                     </div>
                   </div>

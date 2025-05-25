@@ -1,3 +1,4 @@
+import { Facebook, Instagram, MessageSquare } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -16,14 +17,23 @@ const Footer = () => {
                 Transform your body and mind at K4 Fitness. Join our community of dedicated individuals committed to achieving their fitness goals.
               </p>
               <div className="flex space-x-4">
-                <button className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-all duration-300 transform hover:scale-110">
-                  <span className="text-black font-bold">f</span>
+                <button 
+                  onClick={() => window.open('https://facebook.com/k4fitness', '_blank')}
+                  className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-all duration-300 transform hover:scale-110"
+                >
+                  <Facebook className="w-5 h-5 text-white" />
                 </button>
-                <button className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-all duration-300 transform hover:scale-110">
-                  <span className="text-black font-bold">📸</span>
+                <button 
+                  onClick={() => window.open('https://instagram.com/k4fitness', '_blank')}
+                  className="w-10 h-10 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full flex items-center justify-center hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-110"
+                >
+                  <Instagram className="w-5 h-5 text-white" />
                 </button>
-                <button className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-all duration-300 transform hover:scale-110">
-                  <span className="text-black font-bold">💬</span>
+                <button 
+                  onClick={() => window.open('https://wa.me/1234567890', '_blank')}
+                  className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-700 transition-all duration-300 transform hover:scale-110"
+                >
+                  <MessageSquare className="w-5 h-5 text-white" />
                 </button>
               </div>
             </div>

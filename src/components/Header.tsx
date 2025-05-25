@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import logoSvg from '/logo.svg';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,7 +28,7 @@ const Header = () => {
               className="flex items-center space-x-3 group"
             >
               <img 
-                src="/logo.svg" 
+                src={logoSvg} 
                 alt="K4 Fitness Zone" 
                 className="h-8 w-auto" 
               />

@@ -38,8 +38,8 @@ const About = () => {
   return (
     <section id="about" className="py-20 bg-gray-900/50 backdrop-blur-sm relative overflow-hidden">
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(249,115,22,0.1),transparent_50%)]"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(220,38,38,0.1),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,0,0.1),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(255,255,0,0.1),transparent_50%)]"></div>
       
       <div className="container mx-auto px-4 lg:px-8 relative">
         <div className="max-w-6xl mx-auto">
@@ -47,7 +47,7 @@ const About = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
               WHY CHOOSE 
-              <span className="block text-orange-500">
+              <span className="block text-yellow-400">
                 K4 FITNESS?
               </span>
             </h2>
@@ -61,11 +61,11 @@ const About = () => {
             {features.map((feature, index) => {
               const IconComponent = feature.icon;
               return (
-                <div key={index} className="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-2xl hover:border-orange-500/30 transition-all duration-300 transform hover:scale-105 group hover:bg-white/10">
-                  <div className="w-16 h-16 bg-orange-500/20 backdrop-blur-md rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <IconComponent className="w-8 h-8 text-orange-500" />
+                <div key={index} className="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-2xl hover:border-yellow-400/30 transition-all duration-300 transform hover:scale-105 group hover:bg-white/10">
+                  <div className="w-16 h-16 bg-yellow-400/20 backdrop-blur-md rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <IconComponent className="w-8 h-8 text-yellow-400" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4 text-orange-500">{feature.title}</h3>
+                  <h3 className="text-2xl font-bold mb-4 text-yellow-400">{feature.title}</h3>
                   <p className="text-gray-300 leading-relaxed">
                     {feature.description}
                   </p>

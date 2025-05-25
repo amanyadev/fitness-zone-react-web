@@ -19,7 +19,7 @@ const Hero = () => {
         <div className="animate-fade-in-up">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
             TRANSFORM YOUR
-            <span className="block bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
+            <span className="block text-yellow-400">
               BODY & MIND
             </span>
           </h1>
@@ -31,14 +31,14 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button
               onClick={scrollToContact}
-              className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-orange-500/25"
+              className="bg-yellow-400 text-black px-8 py-4 rounded-lg text-lg font-semibold hover:bg-yellow-500 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-yellow-400/25"
             >
               START YOUR JOURNEY
             </button>
             
             <button
               onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-              className="border-2 border-orange-500 text-orange-500 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-orange-500 hover:text-white transition-all duration-300 transform hover:scale-105"
+              className="border-2 border-yellow-400 text-yellow-400 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-yellow-400 hover:text-black transition-all duration-300 transform hover:scale-105"
             >
               LEARN MORE
             </button>
@@ -48,8 +48,8 @@ const Hero = () => {
 
       {/* Animated Elements */}
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-orange-500 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-orange-500 rounded-full mt-2 animate-pulse"></div>
+        <div className="w-6 h-10 border-2 border-yellow-400 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-yellow-400 rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
     </section>

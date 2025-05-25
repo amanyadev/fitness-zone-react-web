@@ -45,7 +45,7 @@ const Gallery = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
               OUR 
-              <span className="text-orange-500">
+              <span className="text-yellow-400">
                 GALLERY
               </span>
             </h2>
@@ -83,8 +83,8 @@ const Gallery = () => {
                   );
                 })}
               </CarouselContent>
-              <CarouselPrevious className="left-4 bg-white/10 backdrop-blur-md border-white/20 text-white hover:bg-orange-500/80" />
-              <CarouselNext className="right-4 bg-white/10 backdrop-blur-md border-white/20 text-white hover:bg-orange-500/80" />
+              <CarouselPrevious className="left-4 bg-white/10 backdrop-blur-md border-white/20 text-white hover:bg-yellow-400/80" />
+              <CarouselNext className="right-4 bg-white/10 backdrop-blur-md border-white/20 text-white hover:bg-yellow-400/80" />
             </Carousel>
           </div>
         </div>

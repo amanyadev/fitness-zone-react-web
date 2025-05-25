@@ -18,12 +18,12 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-orange-500/20">
+    <header className="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-yellow-400/20">
       <nav className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
+            <h1 className="text-2xl font-bold text-yellow-400">
               K4 FITNESS
             </h1>
           </div>
@@ -33,25 +33,25 @@ const Header = () => {
             <div className="ml-10 flex items-baseline space-x-8">
               <button
                 onClick={() => scrollToSection('home')}
-                className="text-gray-300 hover:text-orange-500 px-3 py-2 text-sm font-medium transition-colors duration-200"
+                className="text-gray-300 hover:text-yellow-400 px-3 py-2 text-sm font-medium transition-colors duration-200"
               >
                 Home
               </button>
               <button
                 onClick={() => scrollToSection('about')}
-                className="text-gray-300 hover:text-orange-500 px-3 py-2 text-sm font-medium transition-colors duration-200"
+                className="text-gray-300 hover:text-yellow-400 px-3 py-2 text-sm font-medium transition-colors duration-200"
               >
                 About
               </button>
               <button
                 onClick={() => scrollToSection('services')}
-                className="text-gray-300 hover:text-orange-500 px-3 py-2 text-sm font-medium transition-colors duration-200"
+                className="text-gray-300 hover:text-yellow-400 px-3 py-2 text-sm font-medium transition-colors duration-200"
               >
                 Services
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-orange-600 hover:to-red-600 transition-all duration-200 transform hover:scale-105"
+                className="bg-yellow-400 text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-yellow-500 transition-all duration-200 transform hover:scale-105"
               >
                 Contact
               </button>
@@ -75,25 +75,25 @@ const Header = () => {
             <div className="px-2 pt-2 pb-3 space-y-1">
               <button
                 onClick={() => scrollToSection('home')}
-                className="text-gray-300 hover:text-orange-500 block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-200"
+                className="text-gray-300 hover:text-yellow-400 block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-200"
               >
                 Home
               </button>
               <button
                 onClick={() => scrollToSection('about')}
-                className="text-gray-300 hover:text-orange-500 block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-200"
+                className="text-gray-300 hover:text-yellow-400 block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-200"
               >
                 About
               </button>
               <button
                 onClick={() => scrollToSection('services')}
-                className="text-gray-300 hover:text-orange-500 block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-200"
+                className="text-gray-300 hover:text-yellow-400 block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-200"
               >
                 Services
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="bg-gradient-to-r from-orange-500 to-red-500 text-white block px-3 py-2 rounded-lg text-base font-medium hover:from-orange-600 hover:to-red-600 transition-all duration-200 w-full text-left"
+                className="bg-yellow-400 text-black block px-3 py-2 rounded-lg text-base font-medium hover:bg-yellow-500 transition-all duration-200 w-full text-left"
               >
                 Contact
               </button>

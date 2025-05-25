@@ -12,10 +12,7 @@ interface ContactInfo {
     lat: number;
     lng: number;
   };
-  workingHours: {
-    weekdays: string;
-    weekends: string;
-  };
+  workingHours: string;
 }
 
 const contactInfo: ContactInfo = {
@@ -25,13 +22,11 @@ const contactInfo: ContactInfo = {
   instagram: "k4fitnesszone",
   address: "Sector 6A, K.K. Complex, In front of Akash Enclave, Vrindavan Colony, Telibagh, Lucknow, Uttar Pradesh 226002",
   coordinates: {
-    lat: 26.7760144,
-    lng: 80.9477836
+    lat:  26.776011730366946,
+    lng:  80.95041117359494
   },
-  workingHours: {
-    weekdays: "5:00 AM - 11:00 PM",
-    weekends: "6:00 AM - 10:00 PM"
-  }
+  
+  workingHours: "Monday - Saturday: 5:00 AM - 10:00 AM, 5:00 PM - 10:00 PM\nSunday: Closed"
 };
 
 interface FormData {
@@ -326,8 +321,7 @@ const Contact = () => {
                     <div>
                       <h4 className="font-semibold text-white mb-1">Working Hours</h4>
                       <p className="text-gray-400">
-                        Mon-Fri: {contactInfo.workingHours.weekdays}<br />
-                        Sat-Sun: {contactInfo.workingHours.weekends}
+                        {contactInfo.workingHours}
                       </p>
                     </div>
                   </div>

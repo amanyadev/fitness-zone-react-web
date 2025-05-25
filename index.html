@@ -1,30 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-IN">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="description" content="K4 Fitness Zone - Transform your limits with premium equipment and expert trainers" />
+    <meta name="description" content="K4 Fitness Zone - The #1 gym in Lucknow. Transform your body with state-of-the-art equipment and expert trainers. Join now!" />
     <meta name="theme-color" content="#000000" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://k4fitnesszone.com/" />
-    <meta property="og:title" content="K4 Fitness Zone" />
-    <meta property="og:description" content="Transform your limits with premium equipment and expert trainers" />
+    <meta property="og:title" content="K4 Fitness Zone - Best Gym in Lucknow" />
+    <meta property="og:description" content="Transform your body with state-of-the-art equipment and expert trainers at K4 Fitness Zone" />
     <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_IN" />
 
-    <!-- Preload critical assets -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+    <!-- Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     
-    <title>K4 Fitness Zone</title>
+    <!-- Preload Critical Assets -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+    <link rel="preload" as="image" href="/logo.svg" type="image/svg+xml" />
+    <link rel="preload" as="image" href="/og-image.jpg" type="image/jpeg" />
+    
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+    
+    <title>K4 Fitness Zone - Best Gym in Lucknow | Premium Fitness Center</title>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
     <script type="module" src="/src/main.tsx"></script>
     <script>
       if ('serviceWorker' in navigator) {

@@ -4,7 +4,7 @@ import { Award } from "lucide-react";
 const Trainers = () => {
   const experts = [
     {
-      name: "Ranjeet Chaudhary",
+      name: "Mr. Ranjeet Chaudhary",
       title: "Founder & Fitness Expert",
       experience: "25+ Years",
       image: "/ranjeet.jpg",

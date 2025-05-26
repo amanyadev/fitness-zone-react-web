@@ -34,11 +34,11 @@ const Index = () => {
         <Services />
       </ScrollAnimation>
 
-      <ScrollAnimation direction="right" delay={0.2}>
+      <ScrollAnimation direction="up" delay={0.2}>
         <Trainers />
       </ScrollAnimation>
 
-      <ScrollAnimation direction="right" delay={0.2}>
+      <ScrollAnimation direction="up" delay={0.2}>
         <SocialMedia />
       </ScrollAnimation>
 

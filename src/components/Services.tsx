@@ -1,7 +1,31 @@
 import { Check, Star, Zap } from "lucide-react";
 import { motion } from "framer-motion";
+import { useSale } from "@/contexts/SaleContext";
+import { Badge } from "@/components/ui/badge";
+
+interface DiscountResult {
+  final: number;
+  saved: number;
+  percentOff: number;
+}
+
+const SavingsPill = ({ amount, percent, label = "Save" }: { amount?: number; percent: number; label?: string }) => (
+  <div className="inline-flex items-center bg-green-500/10 text-green-400 px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap">
+    {amount ? (
+      <div className="flex items-center gap-2">
+        <span>{label} ₹{amount.toLocaleString()}</span>
+        <div className="h-3 w-px bg-green-400/30" />
+        <span>{percent}% OFF</span>
+      </div>
+    ) : (
+      <span>{label} {percent}% OFF</span>
+    )}
+  </div>
+);
 
 const Services = () => {
+  const { saleActive, saleDiscount } = useSale();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -22,14 +46,27 @@ const Services = () => {
     }
   };
 
-  // Calculate monthly equivalent and savings
-  const calculateSavings = (totalPrice: number, months: number) => {
-    const monthlyEquivalent = totalPrice / months;
-    const regularMonthly = 2000;
-    const savings = ((regularMonthly - monthlyEquivalent) / regularMonthly) * 100;
+  const calculateSavings = (price: number, months: number) => {
+    const monthlyPrice = 1999; // Base monthly price
+    const regularTotal = monthlyPrice * months;
+    const savings = regularTotal - price;
+    const percentOff = Math.round((savings / regularTotal) * 100);
+    return { savings, percentOff };
+  };
+
+  const applyDiscount = (price: number): DiscountResult => {
+    if (!saleActive) {
+      return {
+        final: price,
+        saved: 0,
+        percentOff: 0
+      };
+    }
+    const discountedPrice = Math.round(price * (1 - saleDiscount / 100));
     return {
-      monthlyEquivalent: Math.round(monthlyEquivalent),
-      savings: Math.round(savings)
+      final: discountedPrice,
+      saved: price - discountedPrice,
+      percentOff: Math.round(((price - discountedPrice) / price) * 100)
     };
   };
 
@@ -59,7 +96,7 @@ const Services = () => {
   const plans = [
     {
       name: "Monthly",
-      price: 2000,
+      price: 1999,
       duration: "month",
       months: 1,
       features: [
@@ -74,7 +111,7 @@ const Services = () => {
     },
     {
       name: "Quarterly",
-      price: 5000,
+      price: 4999,
       duration: "3 months",
       months: 3,
       features: [
@@ -85,11 +122,11 @@ const Services = () => {
         "Fitness tracking app access"
       ],
       popular: false,
-      savings: calculateSavings(5000, 3).savings
+      savings: calculateSavings(5999, 3).savings
     },
     {
       name: "Half Yearly",
-      price: 8000,
+      price: 8999,
       duration: "6 months",
       months: 6,
       features: [
@@ -100,11 +137,11 @@ const Services = () => {
         "Partner workout sessions"
       ],
       popular: true,
-      savings: calculateSavings(8000, 6).savings
+      savings: calculateSavings(8999, 6).savings
     },
     {
       name: "Annual",
-      price: 13000,
+      price: 12999,
       duration: "year",
       months: 12,
       features: [
@@ -115,7 +152,7 @@ const Services = () => {
         "Bring a friend (4x/month)"
       ],
       popular: false,
-      savings: calculateSavings(13000, 12).savings
+      savings: calculateSavings(12999, 12).savings
     }
   ];
 
@@ -201,56 +238,81 @@ const Services = () => {
               <motion.div
                 key={plan.name}
                 variants={itemVariants}
-                className={`relative bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-lg border ${
-                  plan.popular ? 'border-yellow-500' : 'border-white/10'
-                } rounded-2xl p-6 md:p-8 group hover:border-yellow-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-yellow-500/10 hover:-translate-y-1`}
+                className="relative group"
               >
-                {plan.popular && (
-                  <div className="absolute -top-4 inset-x-0 mx-auto w-max bg-yellow-500 text-black px-4 py-1 rounded-full text-sm font-semibold flex items-center space-x-1.5 shadow-lg">
-                    <Star className="w-4 h-4" />
-                    <span>Most Popular</span>
-                  </div>
-                )}
-
-                <div className="text-center mb-6 relative">
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-yellow-500 transition-colors">{plan.name}</h3>
-                  <div className="flex items-baseline justify-center gap-1 group-hover:scale-105 transition-transform">
-                    <span className="text-3xl md:text-4xl font-bold text-white group-hover:text-yellow-500 transition-colors">₹{plan.price}</span>
-                    <span className="text-gray-400 group-hover:text-gray-300 transition-colors">/{plan.duration}</span>
-                  </div>
-                  {plan.savings > 0 && (
-                    <div className="mt-2 bg-green-500/10 text-green-500 text-sm py-1 px-3 rounded-full inline-block group-hover:bg-green-500/20 transition-colors">
-                      Save {plan.savings}%
+                <div className={`bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-lg border 
+                  ${plan.popular ? 'border-yellow-400/50 lg:scale-105' : 'border-white/10'} 
+                  rounded-xl p-6 h-full flex flex-col relative mt-6`}
+                >
+                  {plan.popular && (
+                    <div className="absolute -top-5 left-0 right-0 flex justify-center">
+                      <Badge className="bg-yellow-500 text-black hover:bg-yellow-600 px-4 py-1 text-sm font-semibold">
+                        Most Popular
+                      </Badge>
                     </div>
                   )}
-                  <p className="text-sm text-gray-400 mt-2 group-hover:text-gray-300 transition-colors">
-                    {plan.months > 1 ? `₹${calculateSavings(plan.price, plan.months).monthlyEquivalent}/month` : ''}
-                  </p>
+
+                  <div className="mb-6">
+                    <div className="flex items-start justify-between gap-2 mb-3">
+                      <h3 className="text-xl font-bold text-white">{plan.name} Plan</h3>
+                      {plan.months > 1 && !saleActive && (
+                        <SavingsPill 
+                          percent={calculateSavings(plan.price, plan.months).percentOff} 
+                          label="Save"
+                        />
+                      )}
+                    </div>
+
+                    <div className="space-y-3">
+                      <div className="flex flex-wrap items-baseline gap-2">
+                        <span className="text-3xl font-bold text-white">
+                          ₹{saleActive ? applyDiscount(plan.price).final.toLocaleString() : plan.price.toLocaleString()}
+                        </span>
+                        {saleActive && (
+                          <span className="text-lg text-gray-400 line-through">
+                            ₹{plan.price.toLocaleString()}
+                          </span>
+                        )}
+                      </div>
+
+                      {saleActive && (
+                        <div className="flex items-center">
+                          <SavingsPill 
+                            amount={applyDiscount(plan.price).saved}
+                            percent={applyDiscount(plan.price).percentOff}
+                            label="Save"
+                          />
+                        </div>
+                      )}
+
+                      <p className="text-gray-400 text-sm">per {plan.duration}</p>
+                    </div>
+                  </div>
+
+                  <ul className="space-y-3 mb-6">
+                    {plan.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-2 text-sm text-gray-300 group-hover:text-gray-200 transition-colors">
+                        <Check className="w-5 h-5 text-yellow-500 flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <motion.button
+                    onClick={() => handlePlanPurchase(plan.name, plan.price, plan.duration, plan.features)}
+                    className={`w-full py-3 rounded-xl font-semibold transition-all duration-300 text-sm md:text-base shadow-lg 
+                      ${
+                        plan.popular
+                          ? 'bg-yellow-500 text-black hover:bg-yellow-600'
+                          : 'bg-white/10 text-white hover:bg-white/20'
+                      } hover:shadow-yellow-500/20 group-hover:scale-105 flex items-center justify-center space-x-2`}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <span>Get Started</span>
+                    <Check className="w-4 h-4" />
+                  </motion.button>
                 </div>
-
-                <ul className="space-y-3 mb-6">
-                  {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2 text-sm text-gray-300 group-hover:text-gray-200 transition-colors">
-                      <Check className="w-5 h-5 text-yellow-500 flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <motion.button
-                  onClick={() => handlePlanPurchase(plan.name, plan.price, plan.duration, plan.features)}
-                  className={`w-full py-3 rounded-xl font-semibold transition-all duration-300 text-sm md:text-base shadow-lg 
-                    ${
-                      plan.popular
-                        ? 'bg-yellow-500 text-black hover:bg-yellow-600'
-                        : 'bg-white/10 text-white hover:bg-white/20'
-                    } hover:shadow-yellow-500/20 group-hover:scale-105 flex items-center justify-center space-x-2`}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <span>Get Started</span>
-                  <Check className="w-4 h-4" />
-                </motion.button>
               </motion.div>
             ))}
           </div>

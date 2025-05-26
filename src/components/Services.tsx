@@ -10,7 +10,7 @@ interface DiscountResult {
 }
 
 const SavingsPill = ({ amount, percent, label = "Save" }: { amount?: number; percent: number; label?: string }) => (
-  <div className="inline-flex items-center bg-green-500/10 text-green-400 px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap">
+  <div className="inline-flex items-center justify-center bg-green-500/10 text-green-400 px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap w-fit mx-auto">
     {amount ? (
       <div className="flex items-center gap-2">
         <span>{label} ₹{amount.toLocaleString()}</span>
@@ -122,11 +122,11 @@ const Services = () => {
         "Fitness tracking app access"
       ],
       popular: false,
-      savings: calculateSavings(5999, 3).savings
+      savings: calculateSavings(4999, 3).savings
     },
     {
       name: "Half Yearly",
-      price: 8999,
+      price: 7999,
       duration: "6 months",
       months: 6,
       features: [
@@ -137,7 +137,7 @@ const Services = () => {
         "Partner workout sessions"
       ],
       popular: true,
-      savings: calculateSavings(8999, 6).savings
+      savings: calculateSavings(7999, 6).savings
     },
     {
       name: "Annual",
@@ -253,39 +253,37 @@ const Services = () => {
                   )}
 
                   <div className="mb-6">
-                    <div className="flex items-start justify-between gap-2 mb-3">
+                    <div className="flex flex-col gap-3 text-center">
                       <h3 className="text-xl font-bold text-white">{plan.name} Plan</h3>
-                      {plan.months > 1 && !saleActive && (
-                        <SavingsPill 
-                          percent={calculateSavings(plan.price, plan.months).percentOff} 
-                          label="Save"
-                        />
-                      )}
-                    </div>
 
-                    <div className="space-y-3">
-                      <div className="flex flex-wrap items-baseline gap-2">
-                        <span className="text-3xl font-bold text-white">
-                          ₹{saleActive ? applyDiscount(plan.price).final.toLocaleString() : plan.price.toLocaleString()}
-                        </span>
-                        {saleActive && (
-                          <span className="text-lg text-gray-400 line-through">
-                            ₹{plan.price.toLocaleString()}
+                      <div className="space-y-3">
+                        <div className="flex flex-wrap items-baseline justify-center gap-2">
+                          <span className="text-3xl font-bold text-white">
+                            ₹{saleActive ? applyDiscount(plan.price).final.toLocaleString() : plan.price.toLocaleString()}
                           </span>
-                        )}
-                      </div>
-
-                      {saleActive && (
-                        <div className="flex items-center">
-                          <SavingsPill 
-                            amount={applyDiscount(plan.price).saved}
-                            percent={applyDiscount(plan.price).percentOff}
-                            label="Save"
-                          />
+                          {saleActive && (
+                            <span className="text-lg text-gray-400 line-through">
+                              ₹{plan.price.toLocaleString()}
+                            </span>
+                          )}
                         </div>
-                      )}
 
-                      <p className="text-gray-400 text-sm">per {plan.duration}</p>
+                        <div className="flex flex-col gap-2 items-center">
+                          {saleActive ? (
+                            <SavingsPill 
+                              amount={applyDiscount(plan.price).saved}
+                              percent={applyDiscount(plan.price).percentOff}
+                              label="Save"
+                            />
+                          ) : plan.months > 1 && (
+                            <SavingsPill 
+                              percent={calculateSavings(plan.price, plan.months).percentOff} 
+                              label="Save"
+                            />
+                          )}
+                          <p className="text-gray-400 text-sm">per {plan.duration}</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
 

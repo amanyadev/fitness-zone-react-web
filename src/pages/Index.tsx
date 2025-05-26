@@ -1,9 +1,11 @@
+
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Gallery from "@/components/Gallery";
 import BentoBox from "@/components/BentoBox";
 import Services from "@/components/Services";
+import Trainers from "@/components/Trainers";
 import SocialMedia from "@/components/SocialMedia";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -30,6 +32,10 @@ const Index = () => {
 
       <ScrollAnimation>
         <Services />
+      </ScrollAnimation>
+
+      <ScrollAnimation direction="right" delay={0.2}>
+        <Trainers />
       </ScrollAnimation>
 
       <ScrollAnimation direction="right" delay={0.2}>

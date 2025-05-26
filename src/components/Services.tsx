@@ -157,7 +157,7 @@ const Services = () => {
   ];
 
   return (
-    <section className="py-12 md:py-20 bg-gradient-to-br from-gray-950 to-gray-900 relative overflow-hidden">
+    <section id="services" className="py-12 md:py-20 bg-gradient-to-br from-gray-950 to-gray-900 relative overflow-hidden">
       {/* Background Effects */}
       <motion.div 
         className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(234,179,8,0.08),transparent_50%)]"
@@ -179,11 +179,12 @@ const Services = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
       >
-        <div className="bg-yellow-500 rounded-2xl p-6 md:p-8 relative overflow-hidden">
-          <div className="absolute inset-0 bg-black/5" />
+        <div className="bg-yellow-500 rounded-2xl p-6 md:p-8 relative overflow-hidden group">
+          <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-colors duration-300" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(0,0,0,0.3),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           <div className="relative flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-center md:text-left">
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 group-hover:scale-[1.02] transition-transform duration-300">
                 Start Your Fitness Journey Today!
               </h3>
               <p className="text-white/90 text-sm md:text-base max-w-xl">
@@ -195,7 +196,7 @@ const Services = () => {
               className="bg-black/90 text-yellow-500 px-6 py-3 rounded-xl font-semibold text-sm md:text-base 
                 hover:bg-black transition-all duration-300 flex items-center space-x-2 shadow-lg 
                 hover:shadow-black/50 border border-yellow-500/20 hover:border-yellow-500/50"
-              whileHover={{ scale: 1.02, y: -1 }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
             >
               <Zap className="w-5 h-5" />
@@ -210,12 +211,13 @@ const Services = () => {
           className="max-w-6xl mx-auto"
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true }}
         >
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-12">
             <motion.div 
-              className="inline-block bg-yellow-500/10 border border-yellow-500/20 rounded-full px-3 py-1 mb-4 text-sm md:text-base"
+              className="inline-block bg-yellow-500/10 border border-yellow-500/20 rounded-full px-3 py-1 mb-4 text-sm md:text-base hover:bg-yellow-500/20 hover:border-yellow-500/30 transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
@@ -223,7 +225,7 @@ const Services = () => {
             </motion.div>
             <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">
               Choose Your{" "}
-              <span className="text-yellow-500">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
                 Membership
               </span>
             </h2>
@@ -239,14 +241,16 @@ const Services = () => {
                 key={plan.name}
                 variants={itemVariants}
                 className="relative group"
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.3 }}
               >
                 <div className={`bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-lg border 
                   ${plan.popular ? 'border-yellow-400/50 lg:scale-105' : 'border-white/10'} 
-                  rounded-xl p-6 h-full flex flex-col relative mt-6`}
+                  rounded-xl p-6 h-full flex flex-col relative mt-6 group-hover:border-yellow-400/30 transition-all duration-500`}
                 >
                   {plan.popular && (
                     <div className="absolute -top-5 left-0 right-0 flex justify-center">
-                      <Badge className="bg-yellow-500 text-black hover:bg-yellow-600 px-4 py-1 text-sm font-semibold">
+                      <Badge className="bg-yellow-500 text-black hover:bg-yellow-600 px-4 py-1 text-sm font-semibold animate-pulse">
                         Most Popular
                       </Badge>
                     </div>
@@ -254,11 +258,11 @@ const Services = () => {
 
                   <div className="mb-6">
                     <div className="flex flex-col gap-3 text-center">
-                      <h3 className="text-xl font-bold text-white">{plan.name} Plan</h3>
+                      <h3 className="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors duration-300">{plan.name} Plan</h3>
 
                       <div className="space-y-3">
                         <div className="flex flex-wrap items-baseline justify-center gap-2">
-                          <span className="text-3xl font-bold text-white">
+                          <span className="text-3xl font-bold text-white group-hover:scale-110 transition-transform duration-300">
                             ₹{saleActive ? applyDiscount(plan.price).final.toLocaleString() : plan.price.toLocaleString()}
                           </span>
                           {saleActive && (
@@ -270,16 +274,20 @@ const Services = () => {
 
                         <div className="flex flex-col gap-2 items-center">
                           {saleActive ? (
-                            <SavingsPill 
-                              amount={applyDiscount(plan.price).saved}
-                              percent={applyDiscount(plan.price).percentOff}
-                              label="Save"
-                            />
+                            <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
+                              <SavingsPill 
+                                amount={applyDiscount(plan.price).saved}
+                                percent={applyDiscount(plan.price).percentOff}
+                                label="Save"
+                              />
+                            </motion.div>
                           ) : plan.months > 1 && (
-                            <SavingsPill 
-                              percent={calculateSavings(plan.price, plan.months).percentOff} 
-                              label="Save"
-                            />
+                            <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
+                              <SavingsPill 
+                                percent={calculateSavings(plan.price, plan.months).percentOff} 
+                                label="Save"
+                              />
+                            </motion.div>
                           )}
                           <p className="text-gray-400 text-sm">per {plan.duration}</p>
                         </div>
@@ -289,10 +297,15 @@ const Services = () => {
 
                   <ul className="space-y-3 mb-6">
                     {plan.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-2 text-sm text-gray-300 group-hover:text-gray-200 transition-colors">
+                      <motion.li 
+                        key={feature} 
+                        className="flex items-start gap-2 text-sm text-gray-300 group-hover:text-gray-200 transition-colors"
+                        whileHover={{ x: 2 }}
+                        transition={{ duration: 0.2 }}
+                      >
                         <Check className="w-5 h-5 text-yellow-500 flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
                         <span>{feature}</span>
-                      </li>
+                      </motion.li>
                     ))}
                   </ul>
 
@@ -317,8 +330,8 @@ const Services = () => {
 
           {/* Additional Benefits */}
           <motion.div variants={itemVariants} className="mt-16 text-center">
-            <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-lg border border-white/10 rounded-xl p-6 md:p-8">
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-6">All Plans Include</h3>
+            <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-lg border border-white/10 rounded-xl p-6 md:p-8 group hover:border-yellow-400/30 transition-all duration-500">
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-6 group-hover:text-yellow-400 transition-colors">All Plans Include</h3>
               <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
                 {[
                   "Modern Equipment",
@@ -330,10 +343,15 @@ const Services = () => {
                   "Free WiFi",
                   "Parking Space"
                 ].map((benefit) => (
-                  <div key={benefit} className="flex items-center justify-center space-x-2 text-gray-300">
+                  <motion.div 
+                    key={benefit} 
+                    className="flex items-center justify-center space-x-2 text-gray-300 hover:text-white transition-colors"
+                    whileHover={{ scale: 1.05, x: 2 }}
+                    transition={{ duration: 0.2 }}
+                  >
                     <Check className="w-4 h-4 text-yellow-500" />
                     <span className="text-sm">{benefit}</span>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>

@@ -149,12 +149,13 @@ const SocialMedia = () => {
                   </div>
 
                   <div className="bg-black/30 rounded-xl p-3 md:p-6 border border-white/5">
-                    <div className="aspect-video md:aspect-[2/1] relative overflow-hidden rounded-lg mb-3 md:mb-4">
-                      <Image
-                        src="/images/transformation.jpg"
-                        alt="Fitness Transformation"
-                        className="w-full h-full object-cover"
-                      />
+                    <div className="aspect-video md:aspect-[2/1] relative overflow-hidden rounded-lg mb-3 md:mb-4 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="w-16 h-16 bg-yellow-400/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                          <span className="text-yellow-400 text-2xl">💪</span>
+                        </div>
+                        <p className="text-gray-400 text-sm">Fitness Transformation</p>
+                      </div>
                     </div>
                     <div className="flex items-center space-x-4 md:space-x-6 text-gray-400 text-xs md:text-sm">
                       <button className="hover:text-blue-400 cursor-pointer transition-colors">👍 124 Likes</button>

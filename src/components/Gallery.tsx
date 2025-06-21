@@ -5,34 +5,65 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Dumbbell, Users, Target, Clock, Trophy, Heart } from "lucide-react";
+import { Dumbbell, Users, Target, Clock, Trophy, Heart, Zap, Activity } from "lucide-react";
+import OptimizedImage from "@/components/ui/OptimizedImage";
 
 const Gallery = () => {
   const galleryImages = [
     {
-      url: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      url: "/gallery/gym-equipment-1.jpg",
       title: "Modern Equipment",
       icon: Dumbbell
     },
     {
-      url: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      url: "/gallery/group-training-1.jpg",
       title: "Group Training",
       icon: Users
     },
     {
-      url: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      url: "/gallery/personal-training-1.jpg",
       title: "Personal Training",
       icon: Target
     },
     {
-      url: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
-      title: "Cardio Zone",
-      icon: Heart
+      url: "/gallery/high-intensity-1.jpg",
+      title: "High Intensity",
+      icon: Zap
     },
     {
-      url: "https://images.unsplash.com/photo-1549476464-37392f717541?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      url: "/gallery/strength-training-1.jpg",
       title: "Strength Training",
       icon: Trophy
+    },
+    {
+      url: "/gallery/premium-equipment-1.jpg",
+      title: "Premium Equipment",
+      icon: Dumbbell
+    },
+    {
+      url: "/gallery/strength-zone-1.jpg",
+      title: "Strength Zone",
+      icon: Trophy
+    },
+    {
+      url: "/gallery/fitness-studio-1.jpg",
+      title: "Fitness Studio",
+      icon: Activity
+    },
+    {
+      url: "/gallery/training-area-1.jpg",
+      title: "Training Area",
+      icon: Target
+    },
+    {
+      url: "/gallery/training-zone-1.jpg",
+      title: "Training Zone",
+      icon: Target
+    },
+    {
+      url: "/gallery/training-facility-1.jpg",
+      title: "Training Facility",
+      icon: Target
     }
   ];
 
@@ -63,10 +94,12 @@ const Gallery = () => {
                     <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                       <div className="p-2">
                         <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-md border border-white/10">
-                          <img
+                          <OptimizedImage
                             src={image.url}
                             alt={image.title}
-                            className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-110"
+                            aspectRatio="4/3"
+                            className="transition-transform duration-300 group-hover:scale-110"
+                            fallbackText="Gallery Image"
                           />
                           <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div className="absolute bottom-4 left-4 flex items-center gap-3">

@@ -38,7 +38,7 @@ const SEO = ({
     "affordable gym membership lucknow",
     "gym with personal trainer lucknow"
   ],
-  image = "/images/k4-fitness-zone.jpg",
+  image = "/logo.svg",
   url = "https://k4fitnesszone.com"
 }: SEOProps) => {
   const address = "Sector 6A, K.K. Complex, In front of Akash Enclave, Vrindavan Colony, Telibagh, Lucknow, Uttar Pradesh 226002";
@@ -51,9 +51,7 @@ const SEO = ({
     "@id": url,
     "name": "K4 Fitness Zone",
     "image": [
-      `${url}${image}`,
-      `${url}/images/gym-exterior.jpg`,
-      `${url}/images/gym-interior.jpg`
+      `${url}${image}`
     ],
     "description": description,
     "url": url,
